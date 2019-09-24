@@ -98,7 +98,7 @@ class RTFInterpreter extends Writable {
       doc.fonts = endingGroup.table
     } else if (endingGroup instanceof ColorTable) {
       doc.colors = endingGroup.table
-    } else if (endingGroup !== this.doc && !endingGroup.get('ignorable')) {
+    } else if (endingGroup !== this.doc && endingGroup !== undefined && !endingGroup.get('ignorable')) {
       for (const item of endingGroup.content) {
         doc.addContent(item)
       }
